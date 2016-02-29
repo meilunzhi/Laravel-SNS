@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test api</title>
+	<script src="jquery.min.js"></script>
+</head>
+<form action="http://www.community.com/index.php/api/users" method="post">
+	<input type="text" name="uid" value="5819741398" id="">
+	<input type="text" name="login_type" value="1" id="">
+	<input type="text" name="nickname" value="haha" id="">
+	<input type="text" name="profile_img" value="http://www.xtwind.com" id="">
+	<button type="submit">submit</button>
+</form>
+<hr><br>
+<button id="test">测试</button>
+<hr><br><br>
+<form action="http://www.community.com/index.php/api/users/login" method="post">
+	<input type="text" name="phone" value="" id="">
+	<input type="text" name="password" value="" id="">
+	<button type="submit">submit</button>
+</form>
+<hr><br><br>
+<form action="http://192.168.0.107/community/public/index.php/test" method="post" enctype="multipart/form-data">
+	<input type="file" name="photo">
+	<button type="submit">submit</button>
+</form>
+<hr><br><br>
+<form action="http://www.community.com/index.php/api/articles/comment" method="post">
+	<input type="text" name="user_id" value="52">
+	<input type="text" name="article_id" value="65">
+	<input type="text" name="parent_comment_id" value="0">
+	<input type="text" name="content">
+	<button type="submit">submit comment</button>
+</form>
+<body>
+	<script>
+		$('#test').on('click',function(){
+			var url = 'http://www.community.com/index.php/api/user';
+			var data1 = {
+				'uid':'fdsfdsfdsfsdafsd',
+				'login_type':'1',
+				'nickname':'fdsafds',
+				'profile_img':'2016-01-21/56a0768abf14a.jpg',
+				'score':123,
+				'phone':'15864131',
+				'password':'202cb962ac59075b964b07152d234b70',
+				'easemob_name':'fdsfdsfsdfew',
+				'user_id':'20',
+				'jpush_id':'fdsfdsfds'
+			};
+			$.ajax({
+				url: url,
+				type: 'post',
+				data:data1,
+				success:function(data){
+					console.log(data);
+				},
+				error:function(data){
+					$('body').html(data.responseText);
+					alert(data);
+				}
+			});
+			// $.post(url,user,function(data){
+			// 	console.log(data);
+			// });			
+		});
+
+	</script>
+	
+</body>
+</html>
+
+成功点赞：
+{
+    "status": "success",
+    "msg": "请求成功",
+    "result": ""
+}
+
+取消点赞成功：
+{
+    "status": "success",
+    "msg": "请求成功",
+    "result": ""
+}
+
+判断是否点赞过：
+	点赞过：
+		{
+		    "status": "error",
+		    "msg": "请求失败",
+		    "result": ""
+		}
+	未点赞过：
+		{
+		    "status": "success",
+		    "msg": "请求成功",
+		    "result": ""
+		}
