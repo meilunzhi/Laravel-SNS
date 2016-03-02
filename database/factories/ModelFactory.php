@@ -58,7 +58,7 @@ $factory->define(App\Model\AttentionCategory::class, function (Faker\Generator $
 
 $factory->define(App\Model\AttentionUser::class, function (Faker\Generator $faker) {
     return [
-        'user_id' => 64,
-        'attention_user_id' => 67
+        'user_id' => 52,
+        'attention_user_id' => 54
     ];
 });

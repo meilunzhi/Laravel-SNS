@@ -34,7 +34,7 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <a href="{{ url('admin/user/edit',['userId'=>$user->id]) }}" class="btn btn-danger btn-xs">移除</a>
+                                    <a href="{{ url('admin/user/remove',['userId'=>$user->pivot->user_id,'attention_user_id'=>$user->pivot->attention_user_id]) }}" class="btn btn-danger btn-xs">移除</a>
 
                                 </td>
                             </tr>
