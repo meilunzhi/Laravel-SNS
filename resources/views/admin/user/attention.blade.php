@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    所有用户
+                    <strong>{{ $nickname }}</strong>关注的用户
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -34,18 +34,14 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <a href="{{ url('admin/user/edit',['userId'=>$user->id]) }}" class="btn btn-default btn-xs">修改</a>
-                                	<a href="{{ url('admin/user/attention',['userId'=>$user->id]) }}" class="btn btn-info btn-xs">关注</a>
-                                	<a href="{{ url('admin/user/attention',['userId'=>$user->id]) }}" class="btn btn-warning btn-xs">粉丝</a>
-                                	<a href="#" class="btn btn-success btn-xs">收藏</a>
-                                	<a href="#" class="btn btn btn-primary btn-xs">社区</a>
+                                    <a href="{{ url('admin/user/edit',['userId'=>$user->id]) }}" class="btn btn-danger btn-xs">移除</a>
 
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $users->render() }}
+                    
                 </div>
                 <!-- /.panel-body -->
             </div>

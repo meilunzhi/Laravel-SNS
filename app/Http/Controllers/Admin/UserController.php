@@ -23,4 +23,9 @@ class UserController extends Controller{
         return redirect('admin/user/users');
     }
 
+    public function getAttention($userId){
+        $user = User::find($userId);
+        return $this->render('user.attention')->with('nickname',$user->nickname)->with('users',$user->attentions);
+    }
+
 }
