@@ -2,24 +2,32 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Routes File
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
+| Here is where you will register all of the routes in an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Model\User;
+
 Route::get('/', function () {
-    echo "string";
     return view('welcome');
 });
 
-Route::get('/test','CategoryController@test');
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
 
-/** 后台管理 **/
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
+    /** 后台管理 **/
     Route::controllers([
         'dashboard' => 'DashboardController',
         'user' => 'UserController',
@@ -27,6 +35,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
         'category' => 'CategoryController'
     ]);
 });
+
+
+
 
 /** API接口 **/
 Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
@@ -68,4 +79,9 @@ Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
     Route::post('article/collect','ArticleController@collect');    //收藏文章
     Route::post('article/uncollect','ArticleController@unCollect');    //取消收藏
     Route::post('article/reward','ArticleController@reward');  //文章打赏
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    $this->get('/admin','Admin\AdminController@index');
 });

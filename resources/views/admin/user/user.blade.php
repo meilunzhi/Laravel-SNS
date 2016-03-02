@@ -35,7 +35,10 @@
                                 <td>{{ $user->created_at }}</td>
                                 <td>
                                     <a href="{{ url('admin/user/edit',['userId'=>$user->id]) }}" class="btn btn-primary btn-xs">修改</a>
-                                	<a href="#" class="btn btn-success btn-xs">行为</a>
+                                	<a href="#" class="btn btn-info btn-xs">关注</a>
+                                	<a href="#" class="btn btn-success btn-xs">收藏</a>
+                                	<a href="#" class="btn btn btn-warning btn-xs">收藏</a>
+                                	
                                 </td>
                             </tr>
                             @endforeach
