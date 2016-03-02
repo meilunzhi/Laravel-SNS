@@ -37,7 +37,7 @@
                                     <a href="{{ url('admin/user/edit',['userId'=>$user->id]) }}" class="btn btn-default btn-xs">修改</a>
                                 	<a href="{{ url('admin/user/attention',['userId'=>$user->id]) }}" class="btn btn-info btn-xs">关注</a>
                                 	<a href="{{ url('admin/user/follow',['userId'=>$user->id]) }}" class="btn btn-warning btn-xs">粉丝</a>
-                                	<a href="#" class="btn btn-success btn-xs">收藏</a>
+                                	<a href="{{ url('admin/user/collect',['userId'=>$user->id]) }}" class="btn btn-success btn-xs">收藏</a>
                                 	<a href="#" class="btn btn btn-primary btn-xs">社区</a>
 
                                 </td>

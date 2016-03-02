@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\AttentionUser;
+use App\Model\Collection;
 use App\Model\User;
 use App\Http\Requests\User\UpdateRequest;
 
@@ -15,12 +16,7 @@ class UserController extends Controller{
     }
 
     public function postUpdate(UpdateRequest $request){
-        $data = $request->all();
-        $user = User::find($data['id']);
-        $user->nickname = $data['nickname'];
-        $user->score = $data['score'];
-        $user->phone = $data['phone'];
-        $user->save();
+        User::find($request->input('id'))->update($request->all());
         return redirect('admin/user/users');
     }
 
@@ -34,8 +30,18 @@ class UserController extends Controller{
         return $this->render('user.fan')->with('nickname',$user->nickname)->with('users',$user->followers);
     }
 
-    public function getRemove($userId,$attentionUserId){
+    public function getCollect($userId){
+        $user = $this->getUser($userId);
+        return $this->render('user.collect')->with('nickname',$user->nickname)->with('articles',$user->collects);
+    }
+
+    public function getRemoveAttention($userId,$attentionUserId){
         AttentionUser::where('user_id',$userId)->where('attention_user_id',$attentionUserId)->delete();
+        return redirect()->back();
+    }
+
+    public function getRemoveCollect($userId,$articleId){
+        Collection::where('user_id',$userId)->where('article_id',$articleId)->delete();
         return redirect()->back();
     }
 

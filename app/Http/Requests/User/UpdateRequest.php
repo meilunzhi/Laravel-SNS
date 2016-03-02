@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Http\Requests\Request;
+use App\Model\User;
 
 class UpdateRequest extends Request
 {
