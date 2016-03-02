@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong>{{ $nickname }}</strong>关注的用户
+                    <strong>{{ $nickname }}</strong> 的关注
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">

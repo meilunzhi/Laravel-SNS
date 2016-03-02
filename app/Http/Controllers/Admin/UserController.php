@@ -25,8 +25,13 @@ class UserController extends Controller{
     }
 
     public function getAttention($userId){
-        $user = User::find($userId);
+        $user = $this->getUser($userId);
         return $this->render('user.attention')->with('nickname',$user->nickname)->with('users',$user->attentions);
+    }
+
+    public function getFollow($userId){
+        $user = $this->getUser($userId);
+        return $this->render('user.fan')->with('nickname',$user->nickname)->with('users',$user->followers);
     }
 
     public function getRemove($userId,$attentionUserId){
@@ -34,4 +39,7 @@ class UserController extends Controller{
         return redirect()->back();
     }
 
+    private function getUser($userId){
+        return User::find($userId);
+    }
 }
