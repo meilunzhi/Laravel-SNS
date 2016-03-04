@@ -20,6 +20,11 @@ class UserController extends Controller{
         return redirect('admin/user/users');
     }
 
+    public function getArticle($userId){
+        $user = $this->getUser($userId);
+        return $this->render('user.article')->with('nickname',$user->nickname)->with('articles',$user->articles);
+    }
+
     public function getAttention($userId){
         $user = $this->getUser($userId);
         return $this->render('user.attention')->with('nickname',$user->nickname)->with('users',$user->attentions);

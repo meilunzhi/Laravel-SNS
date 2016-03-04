@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class AdminController extends Controller
 {
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->middleware('auth:admin');
     }
 
-    public function index(){
-        return 'HelloWorld';
+    public function index()
+    {
+        return Auth::guard('admin')->user()->name;
     }
+
 }

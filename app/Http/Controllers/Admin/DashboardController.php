@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Model\User;
 
 class DashboardController extends Controller{
+
     public function getDashboard(){
         return $this->render('dashboard.dashboard')->with([
             'users'=>User::count(),

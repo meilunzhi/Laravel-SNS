@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Hello World!';
 });
 
 /*
@@ -27,6 +27,7 @@ Route::get('/', function () {
 */
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
+
     /** 后台管理 **/
     Route::controllers([
         'dashboard' => 'DashboardController',
@@ -35,9 +36,6 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
         'category' => 'CategoryController'
     ]);
 });
-
-
-
 
 /** API接口 **/
 Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
@@ -83,5 +81,11 @@ Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    $this->get('/admin','Admin\AdminController@index');
+//    $this->get('/admin','Admin\AdminController@index');
+
+    Route::get('admin/login', 'Admin\AuthController@getLogin');
+    Route::post('admin/login', 'Admin\AuthController@postLogin');
+    Route::get('admin/register', 'Admin\AuthController@getRegister');
+    Route::post('admin/register', 'Admin\AuthController@postRegister');
+    Route::get('admin', 'Admin\AdminController@index');
 });
